@@ -1,0 +1,24 @@
+<h4>TEMPLATE DRIVEN FORM</h4>
+<form>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName"  
+        ngModel #firstName="ngModel"
+        (change)="log(firstName)" 
+        required minlength="3" maxlength="10"
+        class="form-control">
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.errors.required">First Name is required.</div>
+            <div *ngIf="firstName.errors.minlength">First Name is min 3 characters.</div>
+            <div *ngIf="firstName.errors.maxlength">First Name is max 10 characters.</div>
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" cols="30" rows="10"
+        ngModel
+        class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
